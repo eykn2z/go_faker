@@ -4,21 +4,21 @@ import (
 	"github.com/aknfujii/faker/data"
 )
 
-func (f *faker) Name() string {
-	firstName, _ := f.FirstName()
-	return firstName + " " + f.LastName()
+func Name() string {
+	firstName, _ := FirstName()
+	return firstName + " " + LastName()
 }
 
-func (f *faker) FemaleName() string {
-	return f.FemaleFirstName() + " " + f.LastName()
+func FemaleName() string {
+	return FemaleFirstName() + " " + LastName()
 }
 
-func (f *faker) MaleName() string {
-	return f.MaleFirstName() + " " + f.LastName()
+func MaleName() string {
+	return MaleFirstName() + " " + LastName()
 }
 
 
-func (f *faker) FirstName() (string, int) {
+func FirstName() (string, int) {
 	firstNameArray := [][]string{
 		data.FirstNameFemaleArray,
 		data.FirstNameMaleArray,
@@ -28,19 +28,19 @@ func (f *faker) FirstName() (string, int) {
 	return randomChoice(firstNameArray[choicedIndex]), gender
 }
 
-func (f *faker) FemaleFirstName() string {
+func FemaleFirstName() string {
 	return randomChoice(data.FirstNameFemaleArray)
 }
 
-func (f *faker) MaleFirstName() string {
+func MaleFirstName() string {
 	return randomChoice(data.FirstNameMaleArray)
 }
 
 
-func (f *faker) LastName() string {
+func LastName() string {
 	return randomChoice(data.LastNameArray)
 }
 
-func (f *faker) Gender() string {
+func Gender() string {
 	return randomChoice(data.Gender)
 }

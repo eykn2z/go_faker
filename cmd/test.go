@@ -7,6 +7,5 @@ import (
 )
 
 func main() {
-	faker := faker.GetFaker()
 	fmt.Println(faker.GetPersons(10))
 }
