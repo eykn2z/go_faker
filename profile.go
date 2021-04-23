@@ -1,7 +1,7 @@
 package faker
 
 import (
-	"faker/data"
+	"github.com/aknfujii/faker/data"
 	"math/rand"
 	"time"
 )
