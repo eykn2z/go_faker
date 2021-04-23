@@ -20,12 +20,13 @@ type Person struct {
 }
 
 type Duration struct {
-	Weekday   []string   `json:"weekday"`
-	StartTime CustomTime `json:"start_time"`
-	EndTime   CustomTime `json:"end_time"`
+	CanContact bool        `json:"can_contact"`
+	Weekday    []string    `json:"weekday,omitempty"`
+	StartTime  *CustomTime `json:"start_time,omitempty"`
+	EndTime    *CustomTime `json:"end_time,omitempty"`
 }
 
-func getWeekdayArray(weekdayArray []time.Weekday) []string {
+func getWeekdayStrArray(weekdayArray []time.Weekday) []string {
 	var weekdayStrArray []string
 	for _, weekday := range weekdayArray {
 		weekdayStrArray = append(weekdayStrArray, weekday.String())
@@ -33,9 +34,18 @@ func getWeekdayArray(weekdayArray []time.Weekday) []string {
 	return weekdayStrArray
 }
 
+func getDuration() Duration {
+	if rand.Intn(2) == 0 {
+		return Duration{CanContact: false}
+	} else {
+		weekdayStrArray := getWeekdayStrArray([]time.Weekday{1, 2, 3, 4, 5})
+		return Duration{CanContact: true, Weekday: weekdayStrArray, StartTime: CustomTime{}.Parse("09:00"), EndTime: CustomTime{}.Parse("17:00")}
+	}
+}
+
 func GetPerson(gender string) *Person {
-	weekdayStrArray := getWeekdayArray([]time.Weekday{1, 2, 3, 4, 5})
-	person := Person{Age: Age(), BirthDay: CustomDate{}.Parse("1999-12-31"), CreatedAt: CustomDateTime{time.Now()}, Duration: Duration{Weekday: weekdayStrArray, StartTime: CustomTime{}.Parse("09:00"), EndTime: CustomTime{}.Parse("17:00")}}
+	age, birthday := getAgeAndBirthday()
+	person := Person{Age: age, BirthDay: birthday, CreatedAt: CustomDateTime{time.Now()}, Duration: getDuration()}
 	if gender == "" {
 		gender = randomChoice(data.Gender)
 	}
@@ -61,6 +71,13 @@ func GetPersons(length int) []Person {
 
 func Age() int {
 	return rand.Intn(60) + 10
+}
+
+func getAgeAndBirthday() (int, CustomDate) {
+	age := Age()
+	now := time.Now()
+	birthday := CustomDate{now.AddDate(-1*age, 0, 0)}
+	return age, birthday
 }
 
 func MaleHeight() float64 {
