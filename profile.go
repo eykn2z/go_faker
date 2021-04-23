@@ -2,6 +2,7 @@ package faker
 
 import (
 	"github.com/aknfujii/faker/data"
+	"math"
 	"math/rand"
 	"time"
 )
@@ -45,11 +46,11 @@ func Age() int {
 }
 
 func MaleHeight() float64 {
-	return rand.NormFloat64() * 6.6 + 171.7
+	return math.Round((rand.NormFloat64() * 6.6 + 171.7) *10) / 10
 }
 
 func FemaleHeight() float64 {
-	return rand.NormFloat64() * 5.7 + 158.3
+	return math.Round((rand.NormFloat64() * 5.7 + 158.3) *10) / 10
 }
 
 
