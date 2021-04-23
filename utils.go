@@ -1,6 +1,7 @@
 package faker
 
 import (
+	"math"
 	"math/rand"
 	"time"
 )
@@ -23,4 +24,9 @@ func randomChoiceIndexNested(array [][]string) int {
 func randomChoiceIF(array []interface{}) interface{} {
 	rand.Seed(time.Now().UnixNano())
 	return array[rand.Intn(len(array))]
+}
+
+func round(floatNum float64, roundNum int) float64{
+	floatRoundNum := float64(roundNum)
+	return math.Round(floatNum * floatRoundNum) / floatRoundNum
 }
