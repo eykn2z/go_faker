@@ -1,18 +1,18 @@
 package faker
 
 import (
-	"github.com/aknfujii/faker/data"
+	"faker/data"
 	"math/rand"
 	"time"
 )
 
 type Person struct {
-	Name string
-	Age int
-	Gender string
-	Height float64
-	Country string
-	CreatedAt time.Time
+	Name string `json:"name"`
+	Age int `json:"age"`
+	Gender string `json:"gender"`
+	Height float64 `json:"height"`
+	Country string `json:"country,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 func GetPerson(gender string) *Person {

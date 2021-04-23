@@ -1,7 +1,7 @@
 package faker
 
 import (
-	"github.com/aknfujii/faker/data"
+	"faker/data"
 )
 
 func Name() string {
