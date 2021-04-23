@@ -1,5 +1,5 @@
-# faker
-faker for golang
+# Faker
+Faker for Golang
 
 ```go
 fmt.Println(faker.GetPersons(1))
