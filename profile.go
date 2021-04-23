@@ -15,7 +15,7 @@ type Person struct {
 	CreatedAt time.Time
 }
 
-func (f *Faker) GetPerson(gender string) *Person {
+func (f *faker) GetPerson(gender string) *Person {
 	person := Person{Age: f.Age(), CreatedAt: time.Now()}
 	if gender == ""{
 		gender = randomChoice(data.Gender)
@@ -32,7 +32,7 @@ func (f *Faker) GetPerson(gender string) *Person {
 	return &person
 }
 
-func (f *Faker) GetPersons(length int) []Person{
+func (f *faker) GetPersons(length int) []Person{
 	var persons = make([]Person, 0)
 	for i := 0; i < length; i++ {
 		persons = append(persons, *f.GetPerson(""))
@@ -40,30 +40,30 @@ func (f *Faker) GetPersons(length int) []Person{
 	return persons
 }
 
-func (f *Faker) Age() int {
+func (f *faker) Age() int {
 	return rand.Intn(60) + 10
 }
 
-func (f *Faker) MaleHeight() float64 {
+func (f *faker) MaleHeight() float64 {
 	return rand.NormFloat64() * 6.6 + 171.7
 }
 
-func (f *Faker) FemaleHeight() float64 {
+func (f *faker) FemaleHeight() float64 {
 	return rand.NormFloat64() * 5.7 + 158.3
 }
 
 
-func (f *Faker) PostCode() string {
+func (f *faker) PostCode() string {
 	// TODO
 	return ""
 }
 
-func (f *Faker) Province() string {
+func (f *faker) Province() string {
 	// TODO
 	return ""
 }
 
-func (f *Faker) Address() string {
+func (f *faker) Address() string {
 	// TODO
 	// buildingNumber streetName streetAddress postcode City
 	return ""

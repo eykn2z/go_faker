@@ -1,4 +1,8 @@
 package faker
 
-type Faker struct {
+type faker struct {
+}
+
+func GetFaker() faker{
+	return faker{}
 }

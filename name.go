@@ -1,24 +1,24 @@
 package faker
 
 import (
-	"github.com/aknfujii/go_exercise/faker/data"
+	"github.com/aknfujii/faker/data"
 )
 
-func (f *Faker) Name() string {
+func (f *faker) Name() string {
 	firstName, _ := f.FirstName()
 	return firstName + " " + f.LastName()
 }
 
-func (f *Faker) FemaleName() string {
+func (f *faker) FemaleName() string {
 	return f.FemaleFirstName() + " " + f.LastName()
 }
 
-func (f *Faker) MaleName() string {
+func (f *faker) MaleName() string {
 	return f.MaleFirstName() + " " + f.LastName()
 }
 
 
-func (f *Faker) FirstName() (string, int) {
+func (f *faker) FirstName() (string, int) {
 	firstNameArray := [][]string{
 		data.FirstNameFemaleArray,
 		data.FirstNameMaleArray,
@@ -28,19 +28,19 @@ func (f *Faker) FirstName() (string, int) {
 	return randomChoice(firstNameArray[choicedIndex]), gender
 }
 
-func (f *Faker) FemaleFirstName() string {
+func (f *faker) FemaleFirstName() string {
 	return randomChoice(data.FirstNameFemaleArray)
 }
 
-func (f *Faker) MaleFirstName() string {
+func (f *faker) MaleFirstName() string {
 	return randomChoice(data.FirstNameMaleArray)
 }
 
 
-func (f *Faker) LastName() string {
+func (f *faker) LastName() string {
 	return randomChoice(data.LastNameArray)
 }
 
-func (f *Faker) Gender() string {
+func (f *faker) Gender() string {
 	return randomChoice(data.Gender)
 }
