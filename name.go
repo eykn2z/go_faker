@@ -17,15 +17,14 @@ func MaleName() string {
 	return MaleFirstName() + " " + LastName()
 }
 
-
-func FirstName() (string, int) {
+func FirstName() (string, string) {
 	firstNameArray := [][]string{
 		data.FirstNameFemaleArray,
 		data.FirstNameMaleArray,
 	}
-	choicedIndex := randomChoiceIndexNested(firstNameArray)
+	choicedIndex := randomIndex(len(firstNameArray))
 	gender := choicedIndex
-	return randomChoice(firstNameArray[choicedIndex]), gender
+	return randomChoice(firstNameArray[choicedIndex]), data.Gender[gender]
 }
 
 func FemaleFirstName() string {
@@ -35,7 +34,6 @@ func FemaleFirstName() string {
 func MaleFirstName() string {
 	return randomChoice(data.FirstNameMaleArray)
 }
-
 
 func LastName() string {
 	return randomChoice(data.LastNameArray)
