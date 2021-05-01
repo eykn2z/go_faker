@@ -45,7 +45,7 @@ func getDuration() Duration {
 
 func GetPerson(gender string) *Person {
 	age, birthday := getAgeAndBirthday()
-	person := Person{Age: age, BirthDay: birthday, CreatedAt: CustomDateTime{time.Now()}, Duration: getDuration()}
+	person := Person{Age: age, BirthDay: birthday, CreatedAt: CustomDateTime{RandomDateTime(time.Now().AddDate(0, 0, -10), time.Now())}, Duration: getDuration()}
 	if gender == "" {
 		gender = randomChoice(data.Gender)
 	}
