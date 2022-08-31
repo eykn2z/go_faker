@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/aknfujii/faker/data"
+	"github.com/eykn2z/go_faker/data"
 )
 
 type Person struct {

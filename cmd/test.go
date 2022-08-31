@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/aknfujii/faker"
+
+	faker "github.com/eykn2z/go_faker"
 )
 
 func main() {
